@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,7 +14,7 @@
         .container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 0; /* Remove padding from the container */
+            padding: 0;
         }
         .gallery {
             display: flex;
@@ -27,14 +26,13 @@
             height: auto;
             margin: 10px;
         }
-        iframe {
-            border: none; /* Remove border from the iframe */
-            width: 20%;
+        object {
+            width: 100%;
             height: 500px;
-            display: block; /* Prevents extra space below the iframe */
+            display: block;
         }
         h2 {
-            margin-top: 20px; /* Add some space between sections */
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -53,7 +51,10 @@
         </div>
         
         <h2>My Resume</h2>
-        <iframe src="MY RESUME.pdf" frameborder="0"></iframe>
+        <object data="MY RESUME.pdf" type="application/pdf">
+            <p>It appears you don't have a PDF plugin for this browser. 
+            No worries, you can <a href="MY RESUME.pdf">click here to download the PDF file.</a></p>
+        </object>
     </div>
 </body>
 </html>
