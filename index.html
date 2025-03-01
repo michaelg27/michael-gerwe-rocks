@@ -9,13 +9,13 @@
             font-family: Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             background-color: beige;
         }
         .container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 0;
+            padding: 20px;
         }
         .gallery {
             display: flex;
@@ -36,25 +36,69 @@
         h2 {
             margin-top: 20px;
         }
+        .toolbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .toolbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+        }
+        section {
+            min-height: 100vh;
+            padding-top: 60px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to My Personal Website</h1>
-        
-        <h2>About Me</h2>
-        <p>Here you can write a description about yourself. Share your interests, experiences, and goals.</p>
-        
-        <h2>My Gallery</h2>
-        <div class="gallery">
-            <img src="image1.jpg" alt="Description of image 1">
-            <img src="image2.jpg" alt="Description of image 2">
-            <img src="image3.jpg" alt="Description of image 3">
-        </div>
-        
-        <h2>My Resume</h2>
-        <embed src="MY RESUME.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="80%" height="800px">
+        <section id="home">
+            <h1>Welcome to My Personal Website</h1>
+            
+            <h2>About Me</h2>
+            <p>Here you can write a description about yourself. Share your interests, experiences, and goals.</p>
+            
+            <h2>My Gallery</h2>
+            <div class="gallery">
+                <img src="image1.jpg" alt="Description of image 1">
+                <img src="image2.jpg" alt="Description of image 2">
+                <img src="image3.jpg" alt="Description of image 3">
+            </div>
+            
+            <h2>My Resume</h2>
+            <embed src="MY RESUME.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="80%" height="800px">
+        </section>
+
+        <section id="dnd">
+            <h2>Dungeons & Dragons</h2>
+            <p>This section is dedicated to Dungeons & Dragons. Add your content here about your campaigns, character sheets, or favorite D&D moments.</p>
+        </section>
+
+        <section id="theatre">
+            <h2>Theatre</h2>
+            <p>Here you can showcase your theatre experiences, favorite plays, or performances you've been a part of.</p>
+        </section>
+
+        <section id="hobbies">
+            <h2>Other Hobbies</h2>
+            <p>Use this section to talk about your other interests and hobbies.</p>
+        </section>
     </div>
+
+    <div class="toolbar">
+        <a href="#home">Home</a>
+        <a href="#dnd">D&D</a>
+        <a href="#theatre">Theatre</a>
+        <a href="#hobbies">Hobbies</a>
+    </div>
+
     <script>
         window.onload = function() {
             var embed = document.querySelector('embed');
