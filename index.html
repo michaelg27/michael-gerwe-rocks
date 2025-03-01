@@ -28,9 +28,9 @@
             height: auto;
             margin: 10px;
         }
-        embed {
+        object, iframe {
             width: 100%;
-            height: 600px; /* Adjusted height */
+            height: 800px;
             display: block;
             margin: 20px 0;
         }
@@ -69,18 +69,13 @@
         </div>
         
         <h2>My Resume</h2>
-        <embed src="MY RESUME.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="100%" height="600px">
+        <object data="MY RESUME.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="100%" height="800px">
+            <iframe src="https://docs.google.com/gview?url=https://michaelg27.github.io/michael-gerwe-rocks/MY_RESUME.pdf&embedded=true" width="100%" height="800px" frameborder="0"></iframe>
+        </object>
         
         <!-- Add some space to ensure the toolbar doesn't overlap content -->
         <div style="height: 60px;"></div>
     </div>
-
-    <script>
-        window.onload = function() {
-            var embed = document.querySelector('embed');
-            embed.src = embed.src;
-        }
-    </script>
 
     <div class="toolbar">
         <a href="index.html">Home</a>
