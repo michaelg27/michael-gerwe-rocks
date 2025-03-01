@@ -16,6 +16,7 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+            min-height: calc(100vh - 60px);
         }
         .hobbies-grid {
             display: grid;
@@ -33,12 +34,14 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background-color: #333;
+            background-color: beige;
             padding: 10px 0;
             text-align: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            z-index: 1;
         }
         .toolbar a {
-            color: white;
+            color: black;
             text-decoration: none;
             padding: 10px 20px;
             margin: 0 10px;
@@ -67,6 +70,9 @@
                 <p>Short description of your travel experiences.</p>
             </div>
         </div>
+        
+        <!-- Add some space to ensure the toolbar doesn't overlap content -->
+        <div style="height: 60px;"></div>
     </div>
 
     <div class="toolbar">
