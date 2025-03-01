@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hobbies - My Personal Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: beige;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .hobby {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .toolbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .toolbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hobbies</h1>
+        
+        <h2>My Favorite Hobbies</h2>
+        <p>Here you can share your favorite hobbies and interests outside of work or school.</p>
+        
+        <h2>Hobby Showcase</h2>
+        <div class="hobbies-grid">
+            <div class="hobby">
+                <h3>Hobby 1: Reading</h3>
+                <p>Short description of why you enjoy reading.</p>
+            </div>
+            <div class="hobby">
+                <h3>Hobby 2: Photography</h3>
+                <p>Short description of your photography experiences.</p>
+            </div>
+            <div class="hobby">
+                <h3>Hobby 3: Traveling</h3>
+                <p>Short description of your travel experiences.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="toolbar">
+        <a href="index.html">Home</a>
+        <a href="dnd.html">D&D</a>
+        <a href="theatre.html">Theatre</a>
+        <a href="hobbies.html">Hobbies</a>
+    </div>
+</body>
+</html>
