@@ -16,21 +16,32 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+            min-height: calc(100vh - 60px);
         }
-        h2 {
-            margin-top: 20px;
+        .dnd-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .dnd-item {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
         .toolbar {
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            background-color: #333;
+            background-color: beige;
             padding: 10px 0;
             text-align: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            z-index: 1;
         }
         .toolbar a {
-            color: white;
+            color: black;
             text-decoration: none;
             padding: 10px 20px;
             margin: 0 10px;
@@ -40,12 +51,28 @@
 <body>
     <div class="container">
         <h1>Dungeons & Dragons</h1>
+        
+        <h2>My D&D Experiences</h2>
         <p>This section is dedicated to Dungeons & Dragons. Add your content here about your campaigns, character sheets, or favorite D&D moments.</p>
         
-        <!-- Add more D&D content here -->
-    </div>
-
-    <div style="height: 60px;"></div>
+        <h2>D&D Showcase</h2>
+        <div class="dnd-content">
+            <div class="dnd-item">
+                <h3>Campaign 1</h3>
+                <p>Short description of the campaign.</p>
+            </div>
+            <div class="dnd-item">
+                <h3>Campaign 2</h3>
+                <p>Short description of the campaign.</p>
+            </div>
+            <div class="dnd-item">
+                <h3>Campaign 3</h3>
+                <p>Short description of the campaign.</p>
+            </div>
+        </div>
+        
+        <!-- Add some space to ensure the toolbar doesn't overlap content -->
+        <div style="height: 60px;"></div>
     </div>
 
     <div class="toolbar">
