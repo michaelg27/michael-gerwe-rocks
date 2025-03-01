@@ -27,11 +27,11 @@
             height: auto;
             margin: 10px;
         }
-        object {
-            width: 80%; /* Adjusted width to make it larger */
-            height: 800px; /* Increased height to display more content */
+        embed {
+            width: 80%;
+            height: 800px;
             display: block;
-            margin: 0 auto; /* Centered the object */
+            margin: 0 auto;
         }
         h2 {
             margin-top: 20px;
@@ -53,10 +53,7 @@
         </div>
         
         <h2>My Resume</h2>
-        <object data="MY RESUME.pdf" type="application/pdf">
-            <p>It appears you don't have a PDF plugin for this browser. 
-            No worries, you can <a href="MY RESUME.pdf">click here to download the PDF file.</a></p>
-        </object>
+        <embed src="MY RESUME.pdf" type="application/pdf" width="80%" height="800px">
     </div>
 </body>
 </html>
