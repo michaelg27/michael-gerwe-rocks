@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="MG monogram">
+  <defs>
+    <style>
+      .ln  { fill:none; stroke:#8fc1e3; stroke-width:1.4; }
+      .lnf { fill:none; stroke:#4a7fa5; stroke-width:0.8; }
+      .gd  { fill:none; stroke:#d9a441; stroke-width:1.6; }
+      .mg  { fill:#f4ece0; font-family:"Cormorant Garamond", Georgia, serif; font-size:54px; font-weight:600; }
+    </style>
+  </defs>
+
+  <!-- outer drafting circle + registration ticks -->
+  <circle class="ln" cx="60" cy="60" r="52"/>
+  <circle class="lnf" cx="60" cy="60" r="46" stroke-dasharray="2 4"/>
+  <circle class="gd" cx="60" cy="60" r="56"/>
+
+  <!-- crosshair ticks -->
+  <line class="ln" x1="60" y1="2"  x2="60" y2="14"/>
+  <line class="ln" x1="60" y1="106" x2="60" y2="118"/>
+  <line class="ln" x1="2"  y1="60" x2="14" y2="60"/>
+  <line class="ln" x1="106" y1="60" x2="118" y2="60"/>
+
+  <!-- MG -->
+  <text class="mg" x="60" y="78" text-anchor="middle">MG</text>
+</svg>

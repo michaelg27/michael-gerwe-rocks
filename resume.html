@@ -3,30 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume – Michael Gerwe</title>
+    <title>Resume — Michael Gerwe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=EB+Garamond:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <style>
-        .resume-embed {
-            width: 100%;
-            height: 80vh;
-            border: 1px solid #d8d0c4;
-            border-radius: 8px;
-            display: block;
-            margin-top: 16px;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Resume</h1>
-        <h2>Download or view below</h2>
 
-        <p><a href="MY RESUME.pdf" download>Download PDF</a></p>
+        <header class="titleblock">
+            <img class="monogram" src="assets/monogram.svg" alt="MG monogram">
+            <div class="fields">
+                <h1 class="project">Resume</h1>
+                <div class="role">The Credits &nbsp;·&nbsp; On Paper</div>
+                <div class="sheet">Sheet 05 — Resume &nbsp;|&nbsp; Full Record</div>
+            </div>
+        </header>
+
+        <p class="lead">The full record, in one document. <a href="MY RESUME.pdf" download>Download the PDF</a> or read it below.</p>
+
+        <div class="section-label">Document</div>
 
         <object data="MY RESUME.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" class="resume-embed">
             <iframe src="https://docs.google.com/gview?url=https://michaelg27.github.io/michael-gerwe-rocks/MY_RESUME.pdf&embedded=true"
                     class="resume-embed" frameborder="0"></iframe>
         </object>
+
+        <p class="margin-note">
+            <span class="lot">MARGIN NOTE 05/05:</span> measure, measure, then cut <span class="lot">ONCE</span>. The record speaks for itself.
+        </p>
+
     </div>
 
     <div class="toolbar">

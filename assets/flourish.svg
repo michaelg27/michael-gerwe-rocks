@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 40" width="600" height="40" role="img" aria-label="decorative flourish">
+  <defs>
+    <style>
+      .s  { fill:none; stroke:#d9a441; stroke-width:1.4; stroke-linecap:round; }
+      .sf { fill:none; stroke:#4a7fa5; stroke-width:0.8; }
+      .dot{ fill:#d9a441; }
+    </style>
+  </defs>
+  <!-- center diamond -->
+  <path class="s" d="M300 8 L312 20 L300 32 L288 20 Z"/>
+  <circle class="dot" cx="300" cy="20" r="2.4"/>
+
+  <!-- left swirl -->
+  <path class="s" d="M288 20 C250 20 250 6 215 6 C185 6 185 30 158 22 C140 17 150 8 138 12"/>
+  <path class="sf" d="M120 20 L276 20"/>
+  <circle class="dot" cx="120" cy="20" r="2"/>
+
+  <!-- right swirl (mirror) -->
+  <path class="s" d="M312 20 C350 20 350 6 385 6 C415 6 415 30 442 22 C460 17 450 8 462 12"/>
+  <path class="sf" d="M324 20 L480 20"/>
+  <circle class="dot" cx="480" cy="20" r="2"/>
+</svg>

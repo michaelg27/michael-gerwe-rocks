@@ -3,42 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D&D – Michael Gerwe</title>
+    <title>D&D — Michael Gerwe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=EB+Garamond:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Dungeons &amp; Dragons</h1>
-        <h2>Campaigns, characters, and chaos</h2>
+
+        <header class="titleblock">
+            <img class="monogram" src="assets/monogram.svg" alt="MG monogram">
+            <div class="fields">
+                <h1 class="project">Dungeons &amp; Dragons</h1>
+                <div class="role">Player &nbsp;·&nbsp; Dungeon Master &nbsp;·&nbsp; Worldbuilder</div>
+                <div class="sheet">Sheet 03 — D&amp;D &nbsp;|&nbsp; Campaigns &amp; Characters</div>
+            </div>
+        </header>
+
+        <p class="lead">Where the same instincts that build a scene build a world — character, stakes, and a good story told well.</p>
+
+        <div class="section-label">Campaigns</div>
 
         <div class="entries">
 
-            <!-- ── Copy/paste a <details> block to add a new entry ── -->
+            <!-- ── To add an entry: copy one <details> block and edit it ── -->
 
-            <details>
-                <summary>Campaign 1</summary>
+            <details class="panel">
+                <summary>Campaign 1 <span class="tag">System · Years</span></summary>
                 <div class="entry-body">
-                    <p>DM, setting, system, dates. Describe the campaign, your character, memorable moments, etc.
-                    Images welcome:</p>
-                    <!-- <img src="images/campaign1.jpg" alt="Campaign 1"> -->
+                    <p>DM, setting, party. Tell the tale — your character, the table, the moment the dice
+                    rewrote the plan. Maps and character art welcome:</p>
+                    <!-- <img src="assets/campaign1.jpg" alt="Campaign 1"> -->
                 </div>
             </details>
 
-            <details>
-                <summary>Campaign 2</summary>
+            <details class="panel">
+                <summary>Campaign 2 <span class="tag">System · Years</span></summary>
                 <div class="entry-body">
-                    <p>DM, setting, system, dates. Description goes here.</p>
+                    <p>DM, setting, party. Description goes here.</p>
                 </div>
             </details>
 
-            <details>
-                <summary>Campaign 3</summary>
+            <details class="panel">
+                <summary>Campaign 3 <span class="tag">System · Years</span></summary>
                 <div class="entry-body">
-                    <p>DM, setting, system, dates. Description goes here.</p>
+                    <p>DM, setting, party. Description goes here.</p>
                 </div>
             </details>
 
         </div>
+
+        <p class="margin-note">
+            <span class="lot">MARGIN NOTE 03/05:</span> a good DM checks the map <span class="lot">TWICE</span> before the party ever rolls.
+        </p>
+
     </div>
 
     <div class="toolbar">

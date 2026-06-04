@@ -3,42 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Theatre – Michael Gerwe</title>
+    <title>Theatre — Michael Gerwe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=EB+Garamond:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Theatre</h1>
-        <h2>Shows, roles, and experiences on stage</h2>
+
+        <header class="titleblock">
+            <img class="monogram" src="assets/monogram.svg" alt="MG monogram">
+            <div class="fields">
+                <h1 class="project">Theatre</h1>
+                <div class="role">Acting &nbsp;·&nbsp; Directing &nbsp;·&nbsp; Design</div>
+                <div class="sheet">Sheet 02 — Theatre &nbsp;|&nbsp; Roles &amp; Productions</div>
+            </div>
+        </header>
+
+        <p class="lead">A record of the work made on stage — what I performed, shaped, or built, and why it mattered.</p>
+
+        <div class="section-label">Productions</div>
 
         <div class="entries">
 
-            <!-- ── Copy/paste a <details> block to add a new entry ── -->
+            <!-- ── To add an entry: copy one <details> block and edit it ── -->
 
-            <details>
-                <summary>Show Title 1</summary>
+            <details class="panel">
+                <summary>Show Title 1 <span class="tag">Role · Year</span></summary>
                 <div class="entry-body">
-                    <p>Role, theatre company, year. Write whatever you want here — description of the show,
-                    your experience, funny stories from rehearsal, anything. You can also drop images in:</p>
-                    <!-- <img src="images/show1.jpg" alt="Show 1"> -->
+                    <p>Theatre company, director, run dates. Write the story of this one here — the part,
+                    what you found in it, a moment you're proud of. Drop in production photos when you have them:</p>
+                    <!-- <img src="assets/show1.jpg" alt="Show 1"> -->
                 </div>
             </details>
 
-            <details>
-                <summary>Show Title 2</summary>
+            <details class="panel">
+                <summary>Show Title 2 <span class="tag">Role · Year</span></summary>
                 <div class="entry-body">
-                    <p>Role, theatre company, year. Description goes here.</p>
+                    <p>Theatre company, director, run dates. Description goes here.</p>
                 </div>
             </details>
 
-            <details>
-                <summary>Show Title 3</summary>
+            <details class="panel">
+                <summary>Show Title 3 <span class="tag">Role · Year</span></summary>
                 <div class="entry-body">
-                    <p>Role, theatre company, year. Description goes here.</p>
+                    <p>Theatre company, director, run dates. Description goes here.</p>
                 </div>
             </details>
 
         </div>
+
+        <p class="margin-note">
+            <span class="lot">MARGIN NOTE 02/05:</span> first, <span class="lot">MEASURE</span> the room — know the house before you play to it.
+        </p>
+
     </div>
 
     <div class="toolbar">
