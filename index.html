@@ -3,87 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: beige;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            min-height: calc(100vh - 60px);
-        }
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-        .gallery img {
-            width: 200px;
-            height: auto;
-            margin: 10px;
-        }
-        object, iframe {
-            width: 100%;
-            height: 800px;
-            display: block;
-            margin: 20px 0;
-        }
-        h2 {
-            margin-top: 20px;
-        }
-        .toolbar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: beige;
-            padding: 10px 0;
-            text-align: center;
-            box-shadow: 0 0 10px rgba(0,0,0,0.2); /* Small shadow */
-            z-index: 1; /* Ensure it overlays content */
-        }
-        .toolbar a {
-            color: black;
-            text-decoration: none;
-            padding: 10px 20px;
-            margin: 0 10px;
-        }
-    </style>
+    <title>Michael Gerwe</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to My Personal Website</h1>
-        
-        <h2>About Me</h2>
-        <p>Here you can write a description about yourself. Share your interests, experiences, and goals.</p>
-        
-        <h2>My Gallery</h2>
-        <div class="gallery">
-            <img src="image1.jpg" alt="Description of image 1">
-            <img src="image2.jpg" alt="Description of image 2">
-            <img src="image3.jpg" alt="Description of image 3">
-        </div>
-        
-        <h2>My Resume</h2>
-        <object data="MY RESUME.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="100%" height="800px">
-            <iframe src="https://docs.google.com/gview?url=https://michaelg27.github.io/michael-gerwe-rocks/MY_RESUME.pdf&embedded=true" width="100%" height="800px" frameborder="0"></iframe>
-        </object>
-        
-        <!-- Add some space to ensure the toolbar doesn't overlap content -->
-        <div style="height: 60px;"></div>
+        <h1>Michael Gerwe</h1>
+        <h2>Actor · Adventurer · Human Person</h2>
+
+        <p>
+            Welcome! This is my little corner of the internet. I'm an actor based out of [your city],
+            passionate about theatre, tabletop games, and all sorts of other things you can read about
+            below. Feel free to poke around.
+        </p>
+
+        <nav class="categories">
+            <a href="theatre.html" class="category-link">Theatre <span class="arrow">▸</span></a>
+            <a href="dnd.html"     class="category-link">D&amp;D  <span class="arrow">▸</span></a>
+            <a href="hobbies.html" class="category-link">Hobbies <span class="arrow">▸</span></a>
+            <a href="resume.html"  class="category-link">Resume  <span class="arrow">▸</span></a>
+        </nav>
     </div>
 
     <div class="toolbar">
-        <a href="index.html">Home</a>
-        <a href="dnd.html">D&D</a>
+        <a href="index.html"   class="active">Home</a>
         <a href="theatre.html">Theatre</a>
+        <a href="dnd.html">D&amp;D</a>
         <a href="hobbies.html">Hobbies</a>
+        <a href="resume.html">Resume</a>
     </div>
 </body>
 </html>

@@ -1,0 +1,160 @@
+/* ── Global ── */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, serif;
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f0e8;
+    color: #2c2c2c;
+}
+
+/* ── Page wrapper ── */
+.container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 24px 100px; /* bottom pad keeps content above toolbar */
+}
+
+/* ── Page headings ── */
+h1 {
+    font-size: 2rem;
+    margin-bottom: 4px;
+}
+
+h2 {
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: #666;
+    margin-top: 0;
+    margin-bottom: 32px;
+}
+
+/* ── Home: category nav cards ── */
+.categories {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 40px;
+}
+
+.category-link {
+    display: block;
+    background-color: #fff;
+    border: 1px solid #d8d0c4;
+    border-radius: 8px;
+    padding: 20px 24px;
+    text-decoration: none;
+    color: #2c2c2c;
+    font-size: 1.1rem;
+    font-family: Georgia, serif;
+    transition: background-color 0.15s, border-color 0.15s;
+}
+
+.category-link:hover {
+    background-color: #eee8dc;
+    border-color: #b0a898;
+}
+
+.category-link .arrow {
+    float: right;
+    color: #999;
+}
+
+/* ── Accordion entries ── */
+.entries {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+details {
+    background-color: #fff;
+    border: 1px solid #d8d0c4;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+details[open] {
+    border-color: #b0a898;
+}
+
+summary {
+    padding: 18px 24px;
+    cursor: pointer;
+    font-size: 1.05rem;
+    list-style: none; /* hide default triangle in Firefox */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+}
+
+summary::-webkit-details-marker {
+    display: none; /* hide default triangle in WebKit */
+}
+
+summary::after {
+    content: '▸';
+    color: #999;
+    transition: transform 0.2s;
+}
+
+details[open] > summary::after {
+    transform: rotate(90deg);
+}
+
+summary:hover {
+    background-color: #f5f0e8;
+}
+
+.entry-body {
+    padding: 0 24px 24px;
+    border-top: 1px solid #ece6da;
+}
+
+.entry-body p {
+    margin-top: 16px;
+}
+
+.entry-body img {
+    max-width: 100%;
+    border-radius: 6px;
+    margin: 12px 0;
+}
+
+/* ── Bottom toolbar ── */
+.toolbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f5f0e8;
+    border-top: 1px solid #d8d0c4;
+    padding: 10px 0;
+    text-align: center;
+    z-index: 10;
+}
+
+.toolbar a {
+    color: #2c2c2c;
+    text-decoration: none;
+    padding: 8px 16px;
+    margin: 0 4px;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    transition: background-color 0.15s;
+}
+
+.toolbar a:hover {
+    background-color: #eee8dc;
+}
+
+.toolbar a.active {
+    font-weight: bold;
+    text-decoration: underline;
+}
