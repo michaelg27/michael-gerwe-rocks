@@ -4,17 +4,18 @@
    ============================================================ */
 
 :root {
-    --ink:        #0a1f33;   /* deepest blueprint navy (page background) */
-    --blueprint:  #102f4a;   /* panel navy */
-    --blueprint2: #143a5c;   /* lighter panel / hover */
-    --line:       #4a7fa5;   /* muted cyan linework */
-    --line-bright:#8fc1e3;   /* bright cyan linework */
-    --grid-minor: rgba(143,193,227,0.06);
-    --grid-major: rgba(143,193,227,0.12);
-    --paper:      #f4ece0;   /* warm cream (primary text) */
-    --paper-dim:  #c2d2df;   /* cool dimmed text */
-    --gold:       #d9a441;   /* warm editorial accent */
-    --oxblood:    #b85c4a;   /* secondary warm accent */
+    --ink:        #182a30;   /* warm teal-ink (page background) — drafting table, not navy */
+    --blueprint:  #1e353c;   /* panel surface */
+    --blueprint2: #264349;   /* lighter panel / hover */
+    --line:       #5c7a7d;   /* soft warm-grey linework */
+    --line-bright:#9bb8b6;   /* brighter linework (used sparingly) */
+    --grid-minor: rgba(206,190,158,0.022); /* faint warm grid */
+    --grid-major: rgba(206,190,158,0.045); /* faint warm grid */
+    --paper:      #f5ece0;   /* warm cream (primary text) */
+    --paper-dim:  #d8d2c4;   /* warm dimmed text */
+    --gold:       #dca94c;   /* warm editorial accent */
+    --gold-soft:  #eccd8f;   /* lighter warm accent */
+    --oxblood:    #c0654f;   /* secondary warm accent */
 
     --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
     --body:  "EB Garamond", Georgia, serif;
@@ -22,6 +23,17 @@
 }
 
 * { box-sizing: border-box; }
+
+/* match the page background so cross-fades never flash white */
+html { background-color: var(--ink); }
+
+/* ── Page cross-fade ── */
+@media (prefers-reduced-motion: no-preference) {
+    body { animation: page-in 0.45s ease both; }
+    body.is-leaving { animation: page-out 0.28s ease both; }
+}
+@keyframes page-in  { from { opacity: 0; } to { opacity: 1; } }
+@keyframes page-out { from { opacity: 1; } to { opacity: 0; } }
 
 body {
     margin: 0;
@@ -31,13 +43,16 @@ body {
     line-height: 1.75;
     color: var(--paper);
     background-color: var(--ink);
-    /* blueprint grid: fine grid + heavy grid lines */
+    /* warm editorial glow layered over a faint blueprint grid */
     background-image:
+        radial-gradient(120% 85% at 50% -10%, rgba(220,169,76,0.16), transparent 62%),
+        radial-gradient(110% 70% at 50% 112%, rgba(192,101,79,0.10), transparent 58%),
         linear-gradient(var(--grid-minor) 1px, transparent 1px),
         linear-gradient(90deg, var(--grid-minor) 1px, transparent 1px),
         linear-gradient(var(--grid-major) 1px, transparent 1px),
         linear-gradient(90deg, var(--grid-major) 1px, transparent 1px);
-    background-size: 26px 26px, 26px 26px, 130px 130px, 130px 130px;
+    background-size: auto, auto, 34px 34px, 34px 34px, 170px 170px, 170px 170px;
+    background-attachment: fixed, fixed, scroll, scroll, scroll, scroll;
 }
 
 /* ── Page wrapper ── */
@@ -53,10 +68,10 @@ body {
     grid-template-columns: auto 1fr;
     gap: 22px;
     align-items: center;
-    border: 1.5px solid var(--line);
-    border-radius: 4px;
-    background: linear-gradient(180deg, rgba(20,58,92,0.55), rgba(16,47,74,0.35));
-    padding: 20px 24px;
+    border: 1px solid rgba(67,101,127,0.6);
+    border-radius: 5px;
+    background: linear-gradient(180deg, rgba(24,52,80,0.4), rgba(18,44,65,0.22));
+    padding: 22px 26px;
     position: relative;
 }
 /* corner registration ticks on the title block */
@@ -66,6 +81,7 @@ body {
     position: absolute;
     width: 12px; height: 12px;
     border: 1.5px solid var(--gold);
+    opacity: 0.7;
 }
 .titleblock::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
 .titleblock::after  { bottom: -1px; right: -1px; border-left: none; border-top: none; }
@@ -83,21 +99,21 @@ body {
     letter-spacing: 0.5px;
 }
 .titleblock .role {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--line-bright);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.15rem;
+    letter-spacing: 0.03em;
+    color: var(--gold-soft);
     margin-top: 8px;
 }
 .titleblock .sheet {
-    font-family: var(--mono);
-    font-size: 0.66rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
     color: var(--paper-dim);
     margin-top: 4px;
-    opacity: 0.7;
+    opacity: 0.85;
 }
 
 /* ── Intro / body copy ── */
@@ -120,42 +136,43 @@ body {
 
 /* ── Section label (mono, technical) ── */
 .section-label {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    color: var(--line-bright);
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-variant: small-caps;
+    text-transform: lowercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-soft);
     margin: 40px 4px 16px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 16px;
 }
 .section-label::after {
     content: "";
     flex: 1;
     height: 1px;
-    background: repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 12px);
+    background: linear-gradient(90deg, rgba(217,164,65,0.35), transparent);
 }
 
 /* ── Blueprint panel (shared card look) ── */
 .panel {
     position: relative;
-    background: linear-gradient(180deg, rgba(20,58,92,0.45), rgba(16,47,74,0.25));
-    border: 1.2px solid var(--line);
-    border-radius: 4px;
+    background: linear-gradient(180deg, rgba(24,52,80,0.32), rgba(18,44,65,0.18));
+    border: 1px solid rgba(67,101,127,0.5);
+    border-radius: 5px;
 }
-/* crosshair corner marks */
+/* crosshair corner marks (subtle, warm) */
 .panel::before,
 .panel::after {
     content: "";
     position: absolute;
-    width: 10px; height: 10px;
-    border-color: var(--line-bright);
+    width: 9px; height: 9px;
+    border-color: var(--gold);
     border-style: solid;
-    opacity: 0.8;
+    opacity: 0.35;
 }
-.panel::before { top: 6px;  left: 6px;  border-width: 1.2px 0 0 1.2px; }
-.panel::after  { bottom: 6px; right: 6px; border-width: 0 1.2px 1.2px 0; }
+.panel::before { top: 7px;  left: 7px;  border-width: 1px 0 0 1px; }
+.panel::after  { bottom: 7px; right: 7px; border-width: 0 1px 1px 0; }
 
 /* ── Home: category nav panels ── */
 .categories {
@@ -172,14 +189,15 @@ body {
     transition: background 0.18s, transform 0.18s, border-color 0.18s;
 }
 .category-link:hover {
-    background: linear-gradient(180deg, rgba(26,72,112,0.6), rgba(20,58,92,0.4));
-    border-color: var(--line-bright);
+    background: linear-gradient(180deg, rgba(28,64,96,0.5), rgba(22,52,78,0.32));
+    border-color: rgba(217,164,65,0.55);
     transform: translateY(-2px);
 }
 .category-link .cat-num {
-    font-family: var(--mono);
-    font-size: 0.66rem;
-    letter-spacing: 0.2em;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.25rem;
+    letter-spacing: 0.02em;
     color: var(--gold);
 }
 .category-link .cat-name {
@@ -202,7 +220,7 @@ body {
     margin-top: 8px;
 }
 details.panel { overflow: hidden; }
-details.panel[open] { border-color: var(--line-bright); }
+details.panel[open] { border-color: rgba(217,164,65,0.5); }
 
 summary {
     padding: 20px 26px;
@@ -220,17 +238,17 @@ summary {
 }
 summary::-webkit-details-marker { display: none; }
 summary .tag {
-    font-family: var(--mono);
-    font-size: 0.64rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
     color: var(--gold);
     white-space: nowrap;
 }
 summary::after {
     content: "+";
     font-family: var(--mono);
-    color: var(--line-bright);
+    color: var(--gold);
     font-size: 1.3rem;
     line-height: 1;
     transition: transform 0.2s;
@@ -257,23 +275,25 @@ a:hover { color: var(--oxblood); }
     position: fixed;
     bottom: 0; left: 0;
     width: 100%;
-    background: rgba(8,24,38,0.92);
+    background: rgba(12,30,44,0.92);
     backdrop-filter: blur(4px);
-    border-top: 1.5px solid var(--line);
+    border-top: 1px solid rgba(67,101,127,0.45);
     padding: 12px 0;
     text-align: center;
     z-index: 10;
 }
 .toolbar a {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-variant: small-caps;
+    text-transform: lowercase;
+    letter-spacing: 0.04em;
     color: var(--paper-dim);
     text-decoration: none;
-    padding: 8px 14px;
-    margin: 0 2px;
+    padding: 5px 11px;
+    margin: 0 1px;
     border-radius: 3px;
+    white-space: nowrap;
     transition: color 0.15s, background 0.15s;
 }
 .toolbar a:hover { color: var(--paper); background: rgba(74,127,165,0.25); }
@@ -282,18 +302,19 @@ a:hover { color: var(--oxblood); }
 /* ── ARG: faint blueprint margin note (a hidden clue) ── */
 .margin-note {
     position: relative;
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.14em;
-    color: var(--line);
-    opacity: 0.45;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+    color: var(--paper-dim);
+    opacity: 0.5;
     margin: 34px 4px 0;
-    padding-left: 14px;
-    border-left: 1px dashed var(--line);
+    padding-left: 16px;
+    border-left: 2px solid rgba(220,169,76,0.4);
     transition: opacity 0.3s;
 }
-.margin-note:hover { opacity: 0.85; }
-.margin-note .lot { color: var(--gold); }
+.margin-note:hover { opacity: 0.9; }
+.margin-note .lot { font-style: normal; font-variant: small-caps; letter-spacing: 0.04em; color: var(--gold); }
 
 /* ── Resume embed ── */
 .resume-embed {
