@@ -302,6 +302,16 @@ body {
     .panel.pop-in, .category-link.pop-in { opacity: 1; --pop: 1; filter: none; transition: none; }
 }
 
+/* An opened entry should always read clearly — never sit in its
+   faint "sketch" state (gold tint / blur), even if the observer
+   considers it out of view once expanded. */
+.entries details.panel[open].pop-in {
+    --pop: 1 !important;
+    opacity: 1 !important;
+    filter: grayscale(0) sepia(0) saturate(1) hue-rotate(0deg) brightness(1) contrast(1) blur(0px) !important;
+    transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
 /* ── Home: category nav panels ── */
 .categories {
     display: grid;
