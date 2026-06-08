@@ -28,4 +28,18 @@
     window.addEventListener('pageshow', function (ev) {
         if (ev.persisted) document.body.classList.remove('is-leaving');
     });
+
+    /* ── Cards "drawn" into being as you scroll: bouncy pop-in ── */
+    var revealables = document.querySelectorAll('.panel, .category-link, details.panel');
+    if (revealables.length && 'IntersectionObserver' in window) {
+        revealables.forEach(function (el) { el.classList.add('pop-in'); });
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                entry.target.classList.toggle('pop-in-visible', entry.isIntersecting);
+            });
+        }, { threshold: 0.5, rootMargin: '0px 0px -60px 0px' });
+        revealables.forEach(function (el) { io.observe(el); });
+    } else {
+        revealables.forEach(function (el) { el.classList.add('pop-in', 'pop-in-visible'); });
+    }
 })();

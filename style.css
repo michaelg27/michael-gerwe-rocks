@@ -3,6 +3,16 @@
    Edit the palette below to recolor the whole site.
    ============================================================ */
 
+/* Register --pop as a typed number so the browser can smoothly
+   interpolate it during transitions (untyped custom properties
+   snap instantly rather than animating). This is what makes the
+   pop-in "bounce" actually animate instead of jumping in place. */
+@property --pop {
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 1;
+}
+
 :root {
     --ink:        #182a30;   /* warm teal-ink (page background) — drafting table, not navy */
     --blueprint:  #1e353c;   /* panel surface */
@@ -17,8 +27,10 @@
     --gold-soft:  #eccd8f;   /* lighter warm accent */
     --oxblood:    #c0654f;   /* secondary warm accent */
 
-    --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
-    --body:  "EB Garamond", Georgia, serif;
+    --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif; /* toolbar only — keep as-is */
+    --display: "Plus Jakarta Sans", ui-sans-serif, sans-serif;        /* big names / headlines */
+    --accent:  "Righteous", ui-sans-serif, cursive, sans-serif;       /* roles / labels / tags — retro-theatrical flavor */
+    --body:  "Fredoka", ui-sans-serif, sans-serif;                    /* body copy — warm & rounded */
     --mono:  "IBM Plex Mono", ui-monospace, "Courier New", monospace;
 }
 
@@ -47,12 +59,13 @@ body {
     background-image:
         radial-gradient(120% 85% at 50% -10%, rgba(220,169,76,0.16), transparent 62%),
         radial-gradient(110% 70% at 50% 112%, rgba(192,101,79,0.10), transparent 58%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='760' height='760' viewBox='0 0 760 760' fill='none' stroke='%23dca94c' stroke-width='1.6' stroke-linecap='round' opacity='0.22'%3E%3C!-- compass --%3E%3Ccircle cx='90' cy='110' r='30' stroke-dasharray='3 5'/%3E%3Cline x1='90' y1='80' x2='90' y2='66'/%3E%3Cline x1='90' y1='140' x2='90' y2='154'/%3E%3Ccircle cx='90' cy='110' r='2' fill='%23dca94c'/%3E%3C!-- ruler --%3E%3Crect x='190' y='90' width='130' height='16' rx='2'/%3E%3Cline x1='205' y1='90' x2='205' y2='99'/%3E%3Cline x1='225' y1='90' x2='225' y2='106'/%3E%3Cline x1='245' y1='90' x2='245' y2='99'/%3E%3Cline x1='265' y1='90' x2='265' y2='106'/%3E%3Cline x1='285' y1='90' x2='285' y2='99'/%3E%3C!-- dimension arrow --%3E%3Cline x1='400' y1='180' x2='540' y2='180'/%3E%3Cpath d='M400 180 l9 -6 m-9 6 l9 6 M540 180 l-9 -6 m9 6 l-9 6'/%3E%3C!-- drama masks --%3E%3Ccircle cx='620' cy='110' r='24'/%3E%3Cpath d='M609 104 q11 -9 22 0'/%3E%3Cpath d='M608 119 q12 12 24 0'/%3E%3Ccircle cx='670' cy='150' r='24'/%3E%3Cpath d='M659 145 q11 -9 22 0'/%3E%3Cpath d='M658 159 q12 -9 24 0'/%3E%3C!-- star --%3E%3Cpath d='M130 290 l5 13 14 1 -11 9 4 14 -12 -8 -12 8 4 -14 -11 -9 14 -1 z'/%3E%3C!-- d20 die --%3E%3Cpolygon points='320,260 360,283 360,322 320,345 280,322 280,283'/%3E%3Ctext x='309' y='309' fill='%23dca94c' stroke='none' font-size='17' font-family='monospace'%3E20%3C/text%3E%3C!-- film reel --%3E%3Ccircle cx='560' cy='320' r='28'/%3E%3Ccircle cx='560' cy='320' r='8'/%3E%3Ccircle cx='549' cy='309' r='4.5'/%3E%3Ccircle cx='571' cy='309' r='4.5'/%3E%3Ccircle cx='549' cy='331' r='4.5'/%3E%3Ccircle cx='571' cy='331' r='4.5'/%3E%3C!-- protractor arc --%3E%3Cpath d='M70 430 A 46 46 0 0 1 162 430'/%3E%3Cline x1='116' y1='430' x2='116' y2='394'/%3E%3Cline x1='116' y1='430' x2='150' y2='406'/%3E%3C!-- quill --%3E%3Cpath d='M260 470 q-26 -44 9 -80 q-26 44 -9 80z'/%3E%3Cline x1='260' y1='470' x2='273' y2='488'/%3E%3C!-- construction grid box --%3E%3Crect x='370' y='420' width='80' height='56' stroke-dasharray='2 4'/%3E%3Cline x1='410' y1='420' x2='410' y2='476' stroke-dasharray='2 4'/%3E%3Cline x1='370' y1='448' x2='450' y2='448' stroke-dasharray='2 4'/%3E%3C!-- small star --%3E%3Cpath d='M540 470 l4 10 10 1 -8 7 3 10 -9 -6 -9 6 3 -10 -8 -7 10 -1 z'/%3E%3C!-- set-square triangle --%3E%3Cpath d='M640 480 l66 0 l-66 -56 z'/%3E%3C!-- dimension line vertical --%3E%3Cline x1='90' y1='560' x2='90' y2='680'/%3E%3Cpath d='M90 560 l-6 9 m6 -9 l6 9 M90 680 l-6 -9 m6 9 l6 -9'/%3E%3C!-- masks small pair --%3E%3Ccircle cx='220' cy='620' r='20'/%3E%3Cpath d='M211 615 q9 -7 18 0'/%3E%3Cpath d='M210 628 q10 10 20 0'/%3E%3C!-- compass rose --%3E%3Ccircle cx='340' cy='620' r='26' stroke-dasharray='2 4'/%3E%3Cline x1='340' y1='594' x2='340' y2='646'/%3E%3Cline x1='314' y1='620' x2='366' y2='620'/%3E%3C!-- scribbled star burst --%3E%3Cpath d='M460 600 l6 16 17 1 -13 11 5 17 -15 -10 -15 10 5 -17 -13 -11 17 -1 z'/%3E%3C!-- film clapper --%3E%3Crect x='600' y='600' width='60' height='40' rx='3'/%3E%3Cline x1='600' y1='612' x2='660' y2='600'/%3E%3Cline x1='612' y1='614' x2='616' y2='602'/%3E%3Cline x1='628' y1='609' x2='632' y2='597'/%3E%3C/svg%3E"),
         linear-gradient(var(--grid-minor) 1px, transparent 1px),
         linear-gradient(90deg, var(--grid-minor) 1px, transparent 1px),
         linear-gradient(var(--grid-major) 1px, transparent 1px),
         linear-gradient(90deg, var(--grid-major) 1px, transparent 1px);
-    background-size: auto, auto, 34px 34px, 34px 34px, 170px 170px, 170px 170px;
-    background-attachment: fixed, fixed, scroll, scroll, scroll, scroll;
+    background-size: auto, auto, 760px 760px, 34px 34px, 34px 34px, 170px 170px, 170px 170px;
+    background-attachment: fixed, fixed, scroll, scroll, scroll, scroll, scroll;
 }
 
 /* ── Page wrapper ── */
@@ -110,29 +123,29 @@ body {
 
 .titleblock .fields { min-width: 0; }
 .titleblock .project {
-    font-family: var(--serif);
-    font-weight: 600;
-    font-size: 2.6rem;
-    line-height: 1.05;
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 2.5rem;
+    line-height: 1.08;
     margin: 0;
     color: var(--paper);
-    letter-spacing: 0.5px;
+    letter-spacing: 0.2px;
 }
 .titleblock .role {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 1.15rem;
-    letter-spacing: 0.03em;
+    font-family: var(--accent);
+    font-style: normal;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
     color: var(--gold-soft);
-    margin-top: 8px;
+    margin-top: 9px;
 }
 .titleblock .sheet {
-    font-family: var(--serif);
-    font-style: italic;
+    font-family: var(--body);
+    font-style: normal;
     font-size: 1rem;
     letter-spacing: 0.01em;
     color: var(--paper-dim);
-    margin-top: 4px;
+    margin-top: 6px;
     opacity: 0.85;
 }
 
@@ -167,7 +180,7 @@ body {
     color: var(--paper-dim);
     margin: 30px 4px;
 }
-.lead .gold { color: var(--gold); font-style: italic; }
+.lead .gold { color: var(--gold); font-style: normal; font-weight: 600; }
 
 /* ── Flourish divider ── */
 .flourish {
@@ -184,11 +197,10 @@ body {
 
 /* ── Section label (mono, technical) ── */
 .section-label {
-    font-family: var(--serif);
-    font-size: 1.15rem;
-    font-variant: small-caps;
-    text-transform: lowercase;
-    letter-spacing: 0.1em;
+    font-family: var(--accent);
+    font-size: 0.92rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
     color: var(--gold-soft);
     margin: 40px 4px 16px;
     display: flex;
@@ -230,18 +242,64 @@ body {
 .panel::after  { bottom: 7px; right: 7px; border-width: 0 1px 1px 0; }
 
 /* a little corkboard chaos: alternating tilts that straighten on hover */
-.categories .category-link.panel:nth-child(6n+1) { transform: rotate(-1.4deg); }
-.categories .category-link.panel:nth-child(6n+2) { transform: rotate(1.1deg); }
-.categories .category-link.panel:nth-child(6n+3) { transform: rotate(-0.8deg); }
-.categories .category-link.panel:nth-child(6n+4) { transform: rotate(1.6deg); }
-.categories .category-link.panel:nth-child(6n+5) { transform: rotate(-1.1deg); }
-.categories .category-link.panel:nth-child(6n+6) { transform: rotate(0.9deg); }
+.categories .category-link.panel:nth-child(6n+1) { --tilt: -1.4deg; }
+.categories .category-link.panel:nth-child(6n+2) { --tilt: 1.1deg; }
+.categories .category-link.panel:nth-child(6n+3) { --tilt: -0.8deg; }
+.categories .category-link.panel:nth-child(6n+4) { --tilt: 1.6deg; }
+.categories .category-link.panel:nth-child(6n+5) { --tilt: -1.1deg; }
+.categories .category-link.panel:nth-child(6n+6) { --tilt: 0.9deg; }
 
-.entries details.panel:nth-child(odd)  { transform: rotate(-0.5deg); }
-.entries details.panel:nth-child(even) { transform: rotate(0.5deg); }
+.entries details.panel:nth-child(odd)  { --tilt: -0.5deg; }
+.entries details.panel:nth-child(even) { --tilt: 0.5deg; }
+
 .entries details.panel,
 .categories .category-link.panel {
+    --tilt: 0deg;
+    --pop: 1;
+    transform: scale(var(--pop)) rotate(var(--tilt));
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.18s, border-color 0.18s, box-shadow 0.25s;
+}
+
+/* ── Cards "drawn" into being as the reader scrolls: blueprint sketch → alive ──
+   Hidden state: a faint, desaturated, slightly-blurred wireframe sketch
+   (as if only the blueprint outline exists). Visible state: full colour,
+   full size, fully inked-in — reverses cleanly when scrolling back up. */
+.entries details.panel.pop-in,
+.categories .category-link.panel.pop-in {
+    --pop: 0.93 !important;
+    opacity: 0.32;
+    filter: grayscale(1) sepia(1) saturate(5) hue-rotate(-18deg) brightness(1.15) contrast(0.85) blur(0.5px);
+    /* Reverse sequence (scrolling up — going back to sketch):
+       1) colour shifts back to gold FIRST (no delay),
+       2) THEN, once the gold tint has finished (~0.5s), the card bounces back down.
+       Each entry below is written as: property duration timing-function delay —
+       fully self-contained so the cascade can't mix delays from the other state. */
+    transition: --pop      0.6s cubic-bezier(0.22, 1.6, 0.36, 1) 0.5s,
+                transform  0.6s cubic-bezier(0.22, 1.6, 0.36, 1) 0.5s,
+                opacity    0.5s ease 0.5s,
+                filter     0.5s ease 0s,
+                background 0.18s ease 0s,
+                border-color 0.18s ease 0s,
+                box-shadow 0.25s ease 0s !important;
+}
+.entries details.panel.pop-in-visible,
+.categories .category-link.panel.pop-in-visible {
+    --pop: 1 !important;
+    opacity: 1;
+    filter: grayscale(0) sepia(0) saturate(1) hue-rotate(0deg) brightness(1) contrast(1) blur(0px);
+    /* Forward sequence (scrolling down — coming alive):
+       1) the card bounces into place FIRST, still gold (no delay),
+       2) THEN, once the bounce has finished (~0.6s), the colour inks in to full life. */
+    transition: --pop      0.6s cubic-bezier(0.22, 1.6, 0.36, 1) 0s,
+                transform  0.6s cubic-bezier(0.22, 1.6, 0.36, 1) 0s,
+                opacity    0.5s ease 0s,
+                filter     0.5s ease 0.6s,
+                background 0.18s ease 0s,
+                border-color 0.18s ease 0s,
+                box-shadow 0.25s ease 0s !important;
+}
+@media (prefers-reduced-motion: reduce) {
+    .panel.pop-in, .category-link.pop-in { opacity: 1; --pop: 1; filter: none; transition: none; }
 }
 
 /* ── Home: category nav panels ── */
@@ -265,18 +323,18 @@ body {
     box-shadow: 0 10px 24px rgba(0,0,0,0.28);
 }
 .category-link .cat-num {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 1.25rem;
+    font-family: var(--accent);
+    font-style: normal;
+    font-size: 1.05rem;
     letter-spacing: 0.02em;
     color: var(--gold);
     display: inline-block;
     transform: rotate(-8deg);
 }
 .category-link .cat-name {
-    font-family: var(--serif);
-    font-size: 1.7rem;
-    font-weight: 600;
+    font-family: var(--display);
+    font-size: 1.5rem;
+    font-weight: 800;
     margin-top: 6px;
 }
 .category-link .cat-desc {
@@ -303,17 +361,17 @@ summary {
     justify-content: space-between;
     align-items: baseline;
     gap: 16px;
-    font-family: var(--serif);
-    font-size: 1.45rem;
-    font-weight: 600;
+    font-family: var(--display);
+    font-size: 1.25rem;
+    font-weight: 700;
     color: var(--paper);
     user-select: none;
 }
 summary::-webkit-details-marker { display: none; }
 summary .tag {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 1rem;
+    font-family: var(--accent);
+    font-style: normal;
+    font-size: 0.85rem;
     letter-spacing: 0.01em;
     color: var(--gold);
     white-space: nowrap;
@@ -380,9 +438,9 @@ a:hover { color: var(--oxblood); }
 /* ── ARG: faint blueprint margin note (a hidden clue) ── */
 .margin-note {
     position: relative;
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 1rem;
+    font-family: var(--body);
+    font-style: normal;
+    font-size: 0.95rem;
     letter-spacing: 0.01em;
     color: var(--paper-dim);
     opacity: 0.5;
@@ -392,7 +450,7 @@ a:hover { color: var(--oxblood); }
     transition: opacity 0.3s;
 }
 .margin-note:hover { opacity: 0.9; }
-.margin-note .lot { font-style: normal; font-variant: small-caps; letter-spacing: 0.04em; color: var(--gold); }
+.margin-note .lot { font-family: var(--accent); font-style: normal; letter-spacing: 0.04em; color: var(--gold); }
 
 /* ── Resume embed ── */
 .resume-embed {
