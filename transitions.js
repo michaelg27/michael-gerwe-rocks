@@ -37,7 +37,7 @@
             entries.forEach(function (entry) {
                 entry.target.classList.toggle('pop-in-visible', entry.isIntersecting);
             });
-        }, { threshold: 0.5, rootMargin: '0px 0px -60px 0px' });
+        }, { threshold: 0, rootMargin: '0px 0px 22% 0px' });
         revealables.forEach(function (el) { io.observe(el); });
     } else {
         revealables.forEach(function (el) { el.classList.add('pop-in', 'pop-in-visible'); });

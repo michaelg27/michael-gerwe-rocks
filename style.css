@@ -3,16 +3,6 @@
    Edit the palette below to recolor the whole site.
    ============================================================ */
 
-/* Register --pop as a typed number so the browser can smoothly
-   interpolate it during transitions (untyped custom properties
-   snap instantly rather than animating). This is what makes the
-   pop-in "bounce" actually animate instead of jumping in place. */
-@property --pop {
-    syntax: '<number>';
-    inherits: true;
-    initial-value: 1;
-}
-
 :root {
     --ink:        #182a30;   /* warm teal-ink (page background) — drafting table, not navy */
     --blueprint:  #1e353c;   /* panel surface */
@@ -37,7 +27,11 @@
 * { box-sizing: border-box; }
 
 /* match the page background so cross-fades never flash white */
-html { background-color: var(--ink); }
+html {
+    background-color: var(--ink);
+    scroll-behavior: smooth;
+    interpolate-size: allow-keywords; /* lets <details> animate height to/from auto */
+}
 
 /* ── Page cross-fade ── */
 @media (prefers-reduced-motion: no-preference) {
@@ -51,15 +45,15 @@ body {
     margin: 0;
     padding: 0;
     font-family: var(--body);
-    font-size: 19px;
-    line-height: 1.75;
+    font-size: 18px;
+    line-height: 1.65;
     color: var(--paper);
     background-color: var(--ink);
     /* warm editorial glow layered over a faint blueprint grid */
     background-image:
         radial-gradient(120% 85% at 50% -10%, rgba(220,169,76,0.16), transparent 62%),
         radial-gradient(110% 70% at 50% 112%, rgba(192,101,79,0.10), transparent 58%),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='760' height='760' viewBox='0 0 760 760' fill='none' stroke='%23dca94c' stroke-width='1.6' stroke-linecap='round' opacity='0.22'%3E%3C!-- compass --%3E%3Ccircle cx='90' cy='110' r='30' stroke-dasharray='3 5'/%3E%3Cline x1='90' y1='80' x2='90' y2='66'/%3E%3Cline x1='90' y1='140' x2='90' y2='154'/%3E%3Ccircle cx='90' cy='110' r='2' fill='%23dca94c'/%3E%3C!-- ruler --%3E%3Crect x='190' y='90' width='130' height='16' rx='2'/%3E%3Cline x1='205' y1='90' x2='205' y2='99'/%3E%3Cline x1='225' y1='90' x2='225' y2='106'/%3E%3Cline x1='245' y1='90' x2='245' y2='99'/%3E%3Cline x1='265' y1='90' x2='265' y2='106'/%3E%3Cline x1='285' y1='90' x2='285' y2='99'/%3E%3C!-- dimension arrow --%3E%3Cline x1='400' y1='180' x2='540' y2='180'/%3E%3Cpath d='M400 180 l9 -6 m-9 6 l9 6 M540 180 l-9 -6 m9 6 l-9 6'/%3E%3C!-- drama masks --%3E%3Ccircle cx='620' cy='110' r='24'/%3E%3Cpath d='M609 104 q11 -9 22 0'/%3E%3Cpath d='M608 119 q12 12 24 0'/%3E%3Ccircle cx='670' cy='150' r='24'/%3E%3Cpath d='M659 145 q11 -9 22 0'/%3E%3Cpath d='M658 159 q12 -9 24 0'/%3E%3C!-- star --%3E%3Cpath d='M130 290 l5 13 14 1 -11 9 4 14 -12 -8 -12 8 4 -14 -11 -9 14 -1 z'/%3E%3C!-- d20 die --%3E%3Cpolygon points='320,260 360,283 360,322 320,345 280,322 280,283'/%3E%3Ctext x='309' y='309' fill='%23dca94c' stroke='none' font-size='17' font-family='monospace'%3E20%3C/text%3E%3C!-- film reel --%3E%3Ccircle cx='560' cy='320' r='28'/%3E%3Ccircle cx='560' cy='320' r='8'/%3E%3Ccircle cx='549' cy='309' r='4.5'/%3E%3Ccircle cx='571' cy='309' r='4.5'/%3E%3Ccircle cx='549' cy='331' r='4.5'/%3E%3Ccircle cx='571' cy='331' r='4.5'/%3E%3C!-- protractor arc --%3E%3Cpath d='M70 430 A 46 46 0 0 1 162 430'/%3E%3Cline x1='116' y1='430' x2='116' y2='394'/%3E%3Cline x1='116' y1='430' x2='150' y2='406'/%3E%3C!-- quill --%3E%3Cpath d='M260 470 q-26 -44 9 -80 q-26 44 -9 80z'/%3E%3Cline x1='260' y1='470' x2='273' y2='488'/%3E%3C!-- construction grid box --%3E%3Crect x='370' y='420' width='80' height='56' stroke-dasharray='2 4'/%3E%3Cline x1='410' y1='420' x2='410' y2='476' stroke-dasharray='2 4'/%3E%3Cline x1='370' y1='448' x2='450' y2='448' stroke-dasharray='2 4'/%3E%3C!-- small star --%3E%3Cpath d='M540 470 l4 10 10 1 -8 7 3 10 -9 -6 -9 6 3 -10 -8 -7 10 -1 z'/%3E%3C!-- set-square triangle --%3E%3Cpath d='M640 480 l66 0 l-66 -56 z'/%3E%3C!-- dimension line vertical --%3E%3Cline x1='90' y1='560' x2='90' y2='680'/%3E%3Cpath d='M90 560 l-6 9 m6 -9 l6 9 M90 680 l-6 -9 m6 9 l6 -9'/%3E%3C!-- masks small pair --%3E%3Ccircle cx='220' cy='620' r='20'/%3E%3Cpath d='M211 615 q9 -7 18 0'/%3E%3Cpath d='M210 628 q10 10 20 0'/%3E%3C!-- compass rose --%3E%3Ccircle cx='340' cy='620' r='26' stroke-dasharray='2 4'/%3E%3Cline x1='340' y1='594' x2='340' y2='646'/%3E%3Cline x1='314' y1='620' x2='366' y2='620'/%3E%3C!-- scribbled star burst --%3E%3Cpath d='M460 600 l6 16 17 1 -13 11 5 17 -15 -10 -15 10 5 -17 -13 -11 17 -1 z'/%3E%3C!-- film clapper --%3E%3Crect x='600' y='600' width='60' height='40' rx='3'/%3E%3Cline x1='600' y1='612' x2='660' y2='600'/%3E%3Cline x1='612' y1='614' x2='616' y2='602'/%3E%3Cline x1='628' y1='609' x2='632' y2='597'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='760' height='760' viewBox='0 0 760 760' fill='none' stroke='%23dca94c' stroke-width='1.6' stroke-linecap='round' opacity='0.10'%3E%3C!-- compass --%3E%3Ccircle cx='90' cy='110' r='30' stroke-dasharray='3 5'/%3E%3Cline x1='90' y1='80' x2='90' y2='66'/%3E%3Cline x1='90' y1='140' x2='90' y2='154'/%3E%3Ccircle cx='90' cy='110' r='2' fill='%23dca94c'/%3E%3C!-- ruler --%3E%3Crect x='190' y='90' width='130' height='16' rx='2'/%3E%3Cline x1='205' y1='90' x2='205' y2='99'/%3E%3Cline x1='225' y1='90' x2='225' y2='106'/%3E%3Cline x1='245' y1='90' x2='245' y2='99'/%3E%3Cline x1='265' y1='90' x2='265' y2='106'/%3E%3Cline x1='285' y1='90' x2='285' y2='99'/%3E%3C!-- dimension arrow --%3E%3Cline x1='400' y1='180' x2='540' y2='180'/%3E%3Cpath d='M400 180 l9 -6 m-9 6 l9 6 M540 180 l-9 -6 m9 6 l-9 6'/%3E%3C!-- drama masks --%3E%3Ccircle cx='620' cy='110' r='24'/%3E%3Cpath d='M609 104 q11 -9 22 0'/%3E%3Cpath d='M608 119 q12 12 24 0'/%3E%3Ccircle cx='670' cy='150' r='24'/%3E%3Cpath d='M659 145 q11 -9 22 0'/%3E%3Cpath d='M658 159 q12 -9 24 0'/%3E%3C!-- star --%3E%3Cpath d='M130 290 l5 13 14 1 -11 9 4 14 -12 -8 -12 8 4 -14 -11 -9 14 -1 z'/%3E%3C!-- d20 die --%3E%3Cpolygon points='320,260 360,283 360,322 320,345 280,322 280,283'/%3E%3Ctext x='309' y='309' fill='%23dca94c' stroke='none' font-size='17' font-family='monospace'%3E20%3C/text%3E%3C!-- film reel --%3E%3Ccircle cx='560' cy='320' r='28'/%3E%3Ccircle cx='560' cy='320' r='8'/%3E%3Ccircle cx='549' cy='309' r='4.5'/%3E%3Ccircle cx='571' cy='309' r='4.5'/%3E%3Ccircle cx='549' cy='331' r='4.5'/%3E%3Ccircle cx='571' cy='331' r='4.5'/%3E%3C!-- protractor arc --%3E%3Cpath d='M70 430 A 46 46 0 0 1 162 430'/%3E%3Cline x1='116' y1='430' x2='116' y2='394'/%3E%3Cline x1='116' y1='430' x2='150' y2='406'/%3E%3C!-- quill --%3E%3Cpath d='M260 470 q-26 -44 9 -80 q-26 44 -9 80z'/%3E%3Cline x1='260' y1='470' x2='273' y2='488'/%3E%3C!-- construction grid box --%3E%3Crect x='370' y='420' width='80' height='56' stroke-dasharray='2 4'/%3E%3Cline x1='410' y1='420' x2='410' y2='476' stroke-dasharray='2 4'/%3E%3Cline x1='370' y1='448' x2='450' y2='448' stroke-dasharray='2 4'/%3E%3C!-- small star --%3E%3Cpath d='M540 470 l4 10 10 1 -8 7 3 10 -9 -6 -9 6 3 -10 -8 -7 10 -1 z'/%3E%3C!-- set-square triangle --%3E%3Cpath d='M640 480 l66 0 l-66 -56 z'/%3E%3C!-- dimension line vertical --%3E%3Cline x1='90' y1='560' x2='90' y2='680'/%3E%3Cpath d='M90 560 l-6 9 m6 -9 l6 9 M90 680 l-6 -9 m6 9 l6 -9'/%3E%3C!-- masks small pair --%3E%3Ccircle cx='220' cy='620' r='20'/%3E%3Cpath d='M211 615 q9 -7 18 0'/%3E%3Cpath d='M210 628 q10 10 20 0'/%3E%3C!-- compass rose --%3E%3Ccircle cx='340' cy='620' r='26' stroke-dasharray='2 4'/%3E%3Cline x1='340' y1='594' x2='340' y2='646'/%3E%3Cline x1='314' y1='620' x2='366' y2='620'/%3E%3C!-- scribbled star burst --%3E%3Cpath d='M460 600 l6 16 17 1 -13 11 5 17 -15 -10 -15 10 5 -17 -13 -11 17 -1 z'/%3E%3C!-- film clapper --%3E%3Crect x='600' y='600' width='60' height='40' rx='3'/%3E%3Cline x1='600' y1='612' x2='660' y2='600'/%3E%3Cline x1='612' y1='614' x2='616' y2='602'/%3E%3Cline x1='628' y1='609' x2='632' y2='597'/%3E%3C/svg%3E"),
         linear-gradient(var(--grid-minor) 1px, transparent 1px),
         linear-gradient(90deg, var(--grid-minor) 1px, transparent 1px),
         linear-gradient(var(--grid-major) 1px, transparent 1px),
@@ -72,8 +66,10 @@ body {
 .container {
     max-width: 820px;
     margin: 0 auto;
-    padding: 48px 24px 120px;
+    padding: 84px 24px 72px;
 }
+/* Homepage runs wider to fit the cards-left / résumé-right hero. */
+.container.home { max-width: 1060px; }
 
 /* ── Drafting "title block" header ── */
 .titleblock {
@@ -103,10 +99,9 @@ body {
     width: 96px;
     height: 96px;
     display: block;
-    transform: rotate(-6deg);
-    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-.titleblock img.monogram:hover { transform: rotate(18deg) scale(1.08); }
+.titleblock img.monogram:hover { transform: scale(1.06); }
 
 .titleblock img.headshot {
     width: 140px;
@@ -189,11 +184,10 @@ body {
     max-width: 420px;
     height: auto;
     margin: 34px auto;
-    opacity: 0.9;
-    transform: rotate(-1.5deg);
-    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    opacity: 0.85;
+    transition: opacity 0.4s ease;
 }
-.flourish:hover { transform: rotate(2deg) scale(1.03); }
+.flourish:hover { opacity: 1; }
 
 /* ── Section label (mono, technical) ── */
 .section-label {
@@ -212,7 +206,6 @@ body {
     color: var(--gold);
     font-size: 0.9rem;
     display: inline-block;
-    transform: rotate(-12deg);
 }
 .section-label::after {
     content: "";
@@ -241,76 +234,38 @@ body {
 .panel::before { top: 7px;  left: 7px;  border-width: 1px 0 0 1px; }
 .panel::after  { bottom: 7px; right: 7px; border-width: 0 1px 1px 0; }
 
-/* a little corkboard chaos: alternating tilts that straighten on hover */
-.categories .category-link.panel:nth-child(6n+1) { --tilt: -1.4deg; }
-.categories .category-link.panel:nth-child(6n+2) { --tilt: 1.1deg; }
-.categories .category-link.panel:nth-child(6n+3) { --tilt: -0.8deg; }
-.categories .category-link.panel:nth-child(6n+4) { --tilt: 1.6deg; }
-.categories .category-link.panel:nth-child(6n+5) { --tilt: -1.1deg; }
-.categories .category-link.panel:nth-child(6n+6) { --tilt: 0.9deg; }
-
-.entries details.panel:nth-child(odd)  { --tilt: -0.5deg; }
-.entries details.panel:nth-child(even) { --tilt: 0.5deg; }
-
-.entries details.panel,
-.categories .category-link.panel {
+/* ── A little corkboard chaos: alternating tilts that straighten on hover ── */
+.category-link.panel,
+details.panel {
     --tilt: 0deg;
-    --pop: 1;
-    transform: scale(var(--pop)) rotate(var(--tilt));
+    transform: rotate(var(--tilt));
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.18s, border-color 0.18s, box-shadow 0.25s;
 }
+/* notecards — varied tilts for an organic, pinned-to-the-corkboard feel */
+.categories .category-link.panel:nth-child(5n+1) { --tilt: -1.4deg; }
+.categories .category-link.panel:nth-child(5n+2) { --tilt:  1.1deg; }
+.categories .category-link.panel:nth-child(5n+3) { --tilt: -0.8deg; }
+.categories .category-link.panel:nth-child(5n+4) { --tilt:  1.6deg; }
+.categories .category-link.panel:nth-child(5n+5) { --tilt: -1.1deg; }
+/* dropdowns — gentle alternating tilt */
+details.panel:nth-of-type(odd)  { --tilt: -0.6deg; }
+details.panel:nth-of-type(even) { --tilt:  0.6deg; }
 
-/* ── Cards "drawn" into being as the reader scrolls: blueprint sketch → alive ──
-   Hidden state: a faint, desaturated, slightly-blurred wireframe sketch
-   (as if only the blueprint outline exists). Visible state: full colour,
-   full size, fully inked-in — reverses cleanly when scrolling back up. */
+/* ── Cards fade gently into view as you scroll ── */
 .entries details.panel.pop-in,
 .categories .category-link.panel.pop-in {
-    --pop: 0.93 !important;
-    opacity: 0.32;
-    filter: grayscale(1) sepia(1) saturate(5) hue-rotate(-18deg) brightness(1.15) contrast(0.85) blur(0.5px);
-    /* Reverse sequence (scrolling up — going back to sketch):
-       1) colour shifts back to gold FIRST (no delay),
-       2) THEN, once the gold tint has finished (~0.5s), the card bounces back down.
-       Each entry below is written as: property duration timing-function delay —
-       fully self-contained so the cascade can't mix delays from the other state. */
-    transition: --pop      0.6s cubic-bezier(0.22, 1.6, 0.36, 1) 0.5s,
-                transform  0.6s cubic-bezier(0.22, 1.6, 0.36, 1) 0.5s,
-                opacity    0.5s ease 0.5s,
-                filter     0.5s ease 0s,
-                background 0.18s ease 0s,
-                border-color 0.18s ease 0s,
-                box-shadow 0.25s ease 0s !important;
+    opacity: 0;
+    transition: opacity 0.55s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.18s, border-color 0.18s, box-shadow 0.25s;
 }
 .entries details.panel.pop-in-visible,
 .categories .category-link.panel.pop-in-visible {
-    --pop: 1 !important;
     opacity: 1;
-    filter: grayscale(0) sepia(0) saturate(1) hue-rotate(0deg) brightness(1) contrast(1) blur(0px);
-    /* Forward sequence (scrolling down — coming alive):
-       1) the card bounces into place FIRST, still gold (no delay),
-       2) THEN, once the bounce has finished (~0.6s), the colour inks in to full life. */
-    transition: --pop      0.6s cubic-bezier(0.22, 1.6, 0.36, 1) 0s,
-                transform  0.6s cubic-bezier(0.22, 1.6, 0.36, 1) 0s,
-                opacity    0.5s ease 0s,
-                filter     0.5s ease 0.6s,
-                background 0.18s ease 0s,
-                border-color 0.18s ease 0s,
-                box-shadow 0.25s ease 0s !important;
 }
 @media (prefers-reduced-motion: reduce) {
-    .panel.pop-in, .category-link.pop-in { opacity: 1; --pop: 1; filter: none; transition: none; }
+    .panel.pop-in, .category-link.pop-in { opacity: 1; transition: none; }
 }
-
-/* An opened entry should always read clearly — never sit in its
-   faint "sketch" state (gold tint / blur), even if the observer
-   considers it out of view once expanded. */
-.entries details.panel[open].pop-in {
-    --pop: 1 !important;
-    opacity: 1 !important;
-    filter: grayscale(0) sepia(0) saturate(1) hue-rotate(0deg) brightness(1) contrast(1) blur(0px) !important;
-    transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-}
+/* An opened entry always reads clearly. */
+.entries details.panel[open].pop-in { opacity: 1; }
 
 /* ── Home: category nav panels ── */
 .categories {
@@ -339,7 +294,6 @@ body {
     letter-spacing: 0.02em;
     color: var(--gold);
     display: inline-block;
-    transform: rotate(-8deg);
 }
 .category-link .cat-name {
     font-family: var(--display);
@@ -353,6 +307,93 @@ body {
     margin-top: 2px;
 }
 
+/* ── Home hero: cards left, résumé right ── */
+.home-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+    gap: 26px;
+    align-items: start;
+    margin-top: 8px;
+}
+.home-grid .section-label { margin-top: 0; }
+.home-works .categories { margin-top: 16px; }
+
+.resume-card { padding: 26px 26px 24px; align-self: start; }
+.resume-card .rc-name {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 1.5rem;
+    margin: 4px 0 2px;
+    color: var(--paper);
+}
+.resume-card .rc-stats {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    color: var(--gold-soft);
+    letter-spacing: 0.02em;
+    margin-bottom: 20px;
+}
+.rc-group { margin-bottom: 18px; }
+.rc-group h4 {
+    font-family: var(--accent);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--gold-soft);
+    margin: 0 0 8px;
+}
+.rc-credit {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 0.95rem;
+    padding: 5px 0;
+    border-bottom: 1px dashed rgba(92,122,125,0.35);
+}
+.rc-credit:last-child { border-bottom: none; }
+.rc-credit .role {
+    color: var(--paper-dim);
+    font-size: 0.84rem;
+    white-space: nowrap;
+    align-self: center;
+}
+.rc-training { display: flex; flex-wrap: wrap; gap: 8px; }
+.rc-training span {
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    color: var(--paper);
+    border: 1px solid rgba(92,122,125,0.5);
+    border-radius: 999px;
+    padding: 4px 12px;
+}
+.rc-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+}
+.btn {
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 11px 18px;
+    border-radius: 4px;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.btn-primary { background: var(--gold); color: var(--ink); border: 1px solid var(--gold); }
+.btn-primary:hover { background: var(--oxblood); border-color: var(--oxblood); color: var(--paper); }
+.btn-ghost { color: var(--gold); border: 1px solid rgba(217,164,65,0.5); }
+.btn-ghost:hover { background: rgba(217,164,65,0.12); color: var(--gold); }
+
+@media (max-width: 900px) {
+    .home-grid { grid-template-columns: 1fr; gap: 22px; }
+    .home-works .categories { margin-top: 12px; }
+    /* On mobile, lead with the résumé; cards follow. Desktop order is unchanged. */
+    .home-grid .resume-card { order: -1; }
+}
+
 /* ── Accordion entries ── */
 .entries {
     display: flex;
@@ -362,6 +403,18 @@ body {
 }
 details.panel { overflow: hidden; }
 details.panel[open] { border-color: rgba(217,164,65,0.5); }
+
+/* Smoothly expand/collapse entries (progressive enhancement — browsers
+   without ::details-content support simply snap open as before). */
+@media (prefers-reduced-motion: no-preference) {
+    details.panel::details-content {
+        height: 0;
+        overflow: clip;
+        transition: height 0.32s ease, content-visibility 0.32s ease;
+        transition-behavior: allow-discrete;
+    }
+    details.panel[open]::details-content { height: auto; }
+}
 
 summary {
     padding: 20px 26px;
@@ -404,7 +457,8 @@ summary:hover { background: rgba(26,72,112,0.35); }
     margin: 0 16px;
 }
 .entry-body p { margin-top: 16px; }
-.entry-body img { max-width: 100%; border-radius: 4px; margin: 14px 0; border: 1px solid var(--line); }
+.entry-body img,
+.entry-body video { max-width: 100%; height: auto; border-radius: 4px; margin: 14px 0; border: 1px solid var(--line); display: block; }
 .entry-body a { color: var(--gold); }
 
 /* ── Links ── */
@@ -414,11 +468,11 @@ a:hover { color: var(--oxblood); }
 /* ── Bottom toolbar ── */
 .toolbar {
     position: fixed;
-    bottom: 0; left: 0;
+    top: 0; left: 0;
     width: 100%;
     background: rgba(12,30,44,0.92);
     backdrop-filter: blur(4px);
-    border-top: 1px solid rgba(67,101,127,0.45);
+    border-bottom: 1px solid rgba(67,101,127,0.45);
     padding: 12px 0;
     text-align: center;
     z-index: 10;
@@ -440,10 +494,10 @@ a:hover { color: var(--oxblood); }
 .toolbar a:hover {
     color: var(--paper);
     background: rgba(74,127,165,0.25);
-    transform: translateY(-3px) rotate(-3deg);
+    transform: translateY(-3px);
     display: inline-block;
 }
-.toolbar a.active { color: var(--gold); transform: rotate(-2deg); display: inline-block; }
+.toolbar a.active { color: var(--gold); }
 
 /* ── ARG: faint blueprint margin note (a hidden clue) ── */
 .margin-note {
@@ -506,10 +560,60 @@ a:hover { color: var(--oxblood); }
 .lockbox .hint { font-family: var(--mono); font-size: 0.72rem; color: var(--line); margin-top: 18px; }
 .lockbox .err  { color: var(--oxblood); font-family: var(--mono); font-size: 0.78rem; min-height: 1.2em; }
 
+/* ── Hero scroll cue ── */
+.scroll-cue {
+    display: flex;
+    justify-content: center;
+    margin: 2px auto 22px;
+    color: var(--gold);
+    opacity: 0.7;
+    transition: opacity 0.2s, transform 0.2s;
+}
+.scroll-cue:hover { opacity: 1; }
+.scroll-cue svg { width: 26px; height: 26px; }
+.home-works { scroll-margin-top: 80px; }
+@media (prefers-reduced-motion: no-preference) {
+    .scroll-cue svg { animation: cue-bounce 1.8s ease-in-out infinite; }
+}
+@keyframes cue-bounce {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(5px); }
+}
+
+/* ── Footer ── */
+.site-footer {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 24px 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    border-top: 1px solid rgba(67,101,127,0.28);
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--paper-dim);
+}
+.site-footer a { color: var(--paper-dim); text-decoration: none; transition: color 0.15s; }
+.site-footer a:hover { color: var(--gold); }
+
+/* ── Keyboard focus (accessible, on-brand) ── */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+.category-link:focus-visible,
+.btn:focus-visible,
+.toolbar a:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
 /* ── Mobile ── */
 @media (max-width: 620px) {
     body { font-size: 17px; }
     .categories { grid-template-columns: 1fr; }
     .titleblock { grid-template-columns: 1fr; text-align: center; justify-items: center; }
     .titleblock .project { font-size: 2.1rem; }
+    .site-footer { flex-direction: column; gap: 8px; text-align: center; }
 }

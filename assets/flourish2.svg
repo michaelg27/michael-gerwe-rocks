@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 40" width="600" height="40" role="img" aria-label="decorative flourish">
+  <defs>
+    <style>
+      .s  { fill:none; stroke:#d9a441; stroke-width:1.4; stroke-linecap:round; stroke-linejoin:round; }
+      .sf { fill:none; stroke:#9bb8b6; stroke-width:0.7; opacity:0.5; stroke-dasharray:4 5; }
+      .f  { fill:#d9a441; }
+    </style>
+  </defs>
+  <!-- dashed connecting rule -->
+  <line class="sf" x1="150" y1="20" x2="450" y2="20"/>
+  <circle class="f" cx="150" cy="20" r="2.2"/>
+  <circle class="f" cx="450" cy="20" r="2.2"/>
+  <!-- side diamonds -->
+  <path class="s" d="M232 12 l8 8 -8 8 -8 -8 z"/>
+  <path class="s" d="M368 12 l8 8 -8 8 -8 -8 z"/>
+  <!-- center diamond, larger -->
+  <path class="s" d="M300 6 l11 14 -11 14 -11 -14 z"/>
+  <circle class="f" cx="300" cy="20" r="2.6"/>
+</svg>
